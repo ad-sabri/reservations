@@ -44,6 +44,8 @@ class LocalityFixtures extends Fixture
             $locality->setLocality($record['locality']);
 
             $manager->persist($locality);
+
+            $this->addReference($record['locality'], $locality);
         }
 
         $manager->flush();

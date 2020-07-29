@@ -1,17 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Localités{% endblock %}
+{% block title %}Fiche d'un Role{% endblock %}
 
 {% block body %}
-    <h1>Liste des Localités</h1>
-
-    {% for locality in localities %}
-        <h3>{{ locality.id }}</h3>
+<h3>{{ locality.id }}</h3>
         <table>
             <thead> </thead>
             <td>{{ locality.postalCode  }}</td>
             <td>{{ locality.locality  }}</td>
         </table>
-    {% endfor %}
-    
 {% endblock %}
