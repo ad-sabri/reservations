@@ -23,11 +23,9 @@
     </address>
 
     <h2>Liste des spectacles</h2>  
-    
     <ul>
     {% for show in location.shows %}
-        <li>{{ show.title }}</li>
+      <li>{{ show.title }}</li>
     {% endfor %}
-    </ul> 
-    
+    </ul>   
 {% endblock %}
