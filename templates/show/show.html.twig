@@ -4,6 +4,12 @@
 
 {% block body %}
     <article>
+
+    {% for representation in show.representations %}
+       <pre>
+           {{ dump(representation.schedule) }}
+       </pre> 
+    {% endfor %}
         <h1>{{ show.title }}</h1>
 
         {% if show.posterUrl %}
