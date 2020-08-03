@@ -9,7 +9,7 @@
         <article>
         <h1>{{ show.title }}</h1>
 
-        {% if show.posterUrl %}
+        {% if show.posterUrl %} 
         <p><img src="{{ asset('images/' ~ show.posterUrl) }}" alt="{{ show.title }}" width="200"></p>
         {% else %}
         <canvas width="200" height="100" style="border:1px solid #000000;"></canvas>
@@ -25,6 +25,14 @@
         <p><em>Réservable</em></p>
         {% else %}
         <p><em>Non Réservable</em></p>
+        {% endif %}
+
+        {% if show.representations|length==1 %}
+        - <span>1 representation</span>
+        {% elseif show.representations|length>1 %}
+        - <span>{{ show.representations|length }} Représentations</span>
+        {% else %}
+        - <em>Aucune Représentation</em> 
         {% endif %}
     </article>
     {% endfor %}
