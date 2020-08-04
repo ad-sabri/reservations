@@ -3,17 +3,19 @@
 {% block title %}Fiche d'un spectacle{% endblock %}
 
 {% block body %}
+    <div class="container">
     <article>
-
-    {% for representation in show.representations %}
-       
-    {% endfor %}
+    
         <h1>{{ show.title }}</h1>
 
         {% if show.posterUrl %}
         <p><img src="{{ asset('images/' ~ show.posterUrl) }}" alt="{{ show.title }}" width="200"></p>
         {% else %}
         <canvas width="200" height="100" style="border:1px solid #000000;"></canvas>
+        {% endif %}
+
+        {% if show.description %}
+        <p><strong>Description: </strong> {{ show.description }}</p>
         {% endif %}
 
         {% if show.location %}
@@ -38,5 +40,32 @@
         {% else %}
         <p>Aucune Représentation</p>
         {% endif %}
+
+        <h2>Liste des Artistes</h2>
+        <p><strong>Auteur: </strong>
+        {% for auteur in collaborateurs['auteur'] %}
+           {{ auteur.firstname }}
+           {{ auteur.lastname }} {% if loop.index == loop.length-1 %} et 
+           {% elseif not loop.last %}, {% endif %}
+        {% endfor %}
+        </p>
+        <p><strong>Metteur en scène: </strong>
+        {% for scenographe in collaborateurs['scénographe'] %}
+            {{ scenographe.firstname }}
+            {{ scenographe.lastname }} {% if loop.index == loop.length-1 %} et 
+            {% elseif not loop.last %}, {% endif %}
+        {% endfor %}
+        </p>
+        <p><strong>Distribution: </strong>
+        {% for comedien in collaborateurs['comédien'] %}
+            {{ comedien.firstname }}
+            {{ comedien.lastname }} {% if loop.index == loop.length-1 %} et
+            {% elseif not loop.last %}, {% endif %}
+        {% endfor %}
+        
+        </p>
     </article>   
+    
+    </div>
+    
 {% endblock %} 
