@@ -4,7 +4,12 @@
 
 {% block body %}
     <h1>{{ type.type|capitalize }}</h1>
-    {% for artist in type.artists %}
-        <li>{{ artist.firstname }} {{ artist.lastname }}</li>
+
+    <h2>Liste des artistes</h2>
+    <ul>
+    {% for artistType in type.artists %}
+        <li>{{ artistType.artist.firstname }} {{ artistType.artist.lastname }}</li>
     {% endfor %}
+    </ul>
+    
 {% endblock %} 
