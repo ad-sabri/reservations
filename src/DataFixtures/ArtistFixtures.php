@@ -6,14 +6,14 @@ use App\Entity\Artist;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class ArtistFixtures extends Fixture
+class ArtistFixtures extends Fixture 
 {
     public function load(ObjectManager $manager)
     {
         $artists = [
             ['firstname'=>'Daniel', 'lastname'=>'Marcelin' ],
             ['firstname'=>'Philipe', 'lastname'=>'Laurent' ],
-            ['firstname'=>'Maruis', 'lastname'=>'Von Mayenberg' ],
+            ['firstname'=>'Maruis', 'lastname'=>'Von Mayenberg' ], 
             ['firstname'=>'Olivier', 'lastname'=>'Boudon' ],
             ['firstname'=>'Anne Marie', 'lastname'=>'Loop' ],
             ['firstname'=>'Pietro', 'lastname'=>'Varasso' ],
@@ -32,6 +32,11 @@ class ArtistFixtures extends Fixture
             $artist->setLastname($record['lastname']);
 
             $manager->persist($artist);
+
+            $this->addReference(
+                $record['firstname']."-".$record['lastname'],
+                $artist
+            );
         }
 
         $manager->flush();

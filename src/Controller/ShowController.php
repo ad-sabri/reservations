@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller; 
 
 use App\Repository\ShowRepository;
 use Symfony\Component\Routing\Annotation\Route;

@@ -8,7 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class TypeFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager) 
     {
         $types = [
             ['type' => 'comédien'],
@@ -22,6 +22,8 @@ class TypeFixtures extends Fixture
             $type->setType($record['type']);
             
             $manager->persist($type);
+
+            $this->addReference($record['type'], $type);
 
         }
 

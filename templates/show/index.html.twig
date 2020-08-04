@@ -3,10 +3,12 @@
 {% block title %}Liste des Spectacles{% endblock %}
 
 {% block body %}
+<div class="container">
+    
     <h1>Liste des Spectacles</h1>
 
     {% for show in shows %}
-        <article>
+
         <h1>{{ show.title }}</h1>
 
         {% if show.posterUrl %} 
@@ -34,6 +36,8 @@
         {% else %}
         - <em>Aucune Représentation</em> 
         {% endif %}
-    </article>
+    
     {% endfor %}
+    </div>
+</div>    
 {% endblock %}
