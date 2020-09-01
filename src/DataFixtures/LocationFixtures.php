@@ -61,7 +61,7 @@ class LocationFixtures extends Fixture implements DependentFixtureInterface
             $location->setAddress($record['address']);
             $location->setLocality($this->getReference($record['locality']));
             $location->setWebsite($record['website']);
-            $location->setPhone($record['phone']);
+            $location->setPhone($record['phone']); 
 
             $manager->persist($location); 
 

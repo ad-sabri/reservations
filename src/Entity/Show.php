@@ -218,4 +218,21 @@ class Show
 
         return $this;
     }
+
+    /**
+     * @return Collection|Collaboration[]
+     */
+
+     public function getAuthors(): Collection
+     {
+        $authors = new ArrayCollection();
+
+        foreach($this->collaborations as $collaboration) {
+            if($collaboration->getArtistType()->getType()->getType()=="scénographe") {
+                $authors->add($collaboration->getArtistType()->getArtist());
+            }
+        }
+
+        return $authors;
+     }
 }

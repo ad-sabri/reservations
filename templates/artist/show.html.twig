@@ -1,14 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block title %}Fiche d'un artiste{% endblock %} 
 
 {% block body %}
-    <h1>{{artist.firstname}} {{artist.lastname}}</h1>
+    <div class="container">
+        <h1 style="margin-top: 30px;">{{artist.firstname}}{{artist.lastname}}</h1>
 
-    <h2>Liste des Types</h2>
-    <ul>
-        {% for artistType in artist.types %}
-            <li>{{ artistType.type.type }}</li>
-        {% endfor %}
-    </ul>  
+        <h2>Liste des Types</h2>
+            <ul>
+                {% for artistType in artist.types %}
+                    <li>{{ artistType.type.type }}</li>
+                {% endfor %}
+            </ul>  
+    </div>
 {% endblock %}

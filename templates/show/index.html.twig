@@ -1,43 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block title %}Liste des Spectacles{% endblock %}
 
 {% block body %}
 <div class="container">
     
-    <h1>Liste des Spectacles</h1>
+    <h1 style="margin-top: 30px; margin-bottom:30px;">Liste des Spectacles</h1>
 
-    {% for show in shows %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Representations</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Réservable</th>
+            </tr>
+        </thead>
 
-        <h1>{{ show.title }}</h1>
-
-        {% if show.posterUrl %} 
-        <p><img src="{{ asset('images/' ~ show.posterUrl) }}" alt="{{ show.title }}" width="200"></p>
-        {% else %}
-        <canvas width="200" height="100" style="border:1px solid #000000;"></canvas>
-        {% endif %}
-
-        {% if show.location %}
-        <p><strong>Lieu de Création: </strong> {{ show.location.designation }}</p>
-        {% endif %}
-
-        <p><strong>Prix: </strong>{{ show.price }} euros</p>
-
-        {% if show.bookable %}
-        <p><em>Réservable</em></p>
-        {% else %}
-        <p><em>Non Réservable</em></p>
-        {% endif %}
-
-        {% if show.representations|length==1 %}
-        - <span>1 representation</span>
-        {% elseif show.representations|length>1 %}
-        - <span>{{ show.representations|length }} Représentations</span>
-        {% else %}
-        - <em>Aucune Représentation</em> 
-        {% endif %}
-    
-    {% endfor %}
-    </div>
+        <tbody>
+        {% for show in shows %}
+            <tr>    
+                <td>{{ show.title }}</td>
+            {% if show.location %}
+                <td>{{ show.location.designation }}</td>
+            {% else %}
+                <td> </td>   
+            {% endif %}  
+                <td>{{ show.representations|length }}</td>
+                <td>{{ show.price|number_format(2, ',','.')}}&nbsp;&euro;</td>
+            {% if show.bookable %}
+                <td>Oui</td>
+            {% else %}  
+                <td>Non</td>  
+            {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>   
+    <p>Total: {{ shows|length }} spectacles.</p>
 </div>    
 {% endblock %}
+

@@ -1,23 +1,25 @@
-{% extends 'base.html.twig' %} 
+{% extends 'layouts/base.html.twig' %} 
 
 {% block title %}Hello ArtistController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des Artistes</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artist in artists %}
-            <tr>
-                <td>{{artist.firstname}}</td>
-                <td>{{artist.lastname}}</td>
-            </tr>
-        {% endfor %}    
-        </tbody>
-    </table>
+    <div class="container">
+        <h1 style="margin-top: 30px; margin-bottom:30px;">Liste des Artistes</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for artist in artists %}
+                <tr>
+                    <td>{{artist.firstname}}</td>
+                    <td>{{artist.lastname}}</td>
+                </tr>
+            {% endfor %}    
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
